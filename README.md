@@ -1,26 +1,22 @@
-# Scanner_Port
-Multithreaded C++ TCP port scanner . Fast, small, for learning and authorized pentesting.
+# interactive_scanner
 
-# Simple C++ Port Scanner
-
-A lightweight, multithreaded TCP port scanner written in C++17.  
-It performs non-blocking `connect()` calls with a timeout and supports scanning a port range concurrently using threads.
+A minimal, single-file **interactive TCP port scanner** in C++ (IPv4).  
+The program prompts for a target IP/hostname and optional port range and timeout when run without command-line arguments. Useful for learning how port scanning works and for quick LAN checks.
 
 > **Warning:** Only scan systems you own or have explicit permission to test. Unauthorized scanning may be illegal.
 
 ## Features
-- Hostname or IPv4 input
-- Configurable port range (default 1–100)
-- Multithreaded scanning (configurable number of threads)
-- Non-blocking `connect()` with timeout (avoids long hangs)
-- Simple output listing open ports
+- Interactive prompt when run with no arguments
+- Accepts command-line arguments for scripted use
+- Uses non-blocking `connect()` + `select()` to implement per-port timeouts
+- IPv4 hostname resolution (via `getaddrinfo`)
+- Small and easy to read — great for learning
 
 ## Requirements
-- Linux (Kali recommended)
-- `g++` with C++17 support
-- POSIX sockets (the code uses POSIX APIs)
+- Linux (Kali recommended) or any POSIX-compatible OS
+- `g++` (supports `-std=c++11`)
 
-On Kali install build tools:
+Install build essentials on Debian/Ubuntu/Kali:
 
 ```bash
 sudo apt update
